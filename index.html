@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MiniAgentLite - Agen Ringan & Cepat Telegram PC Controller</title>
+  <meta name="description" content="Aplikasi panduan interaktif dan simulator agen AI ringan berbasis Telegram, Gemini Flash Lite / Groq API dengan Tool Calling pengendali PC.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="brand">
+        <span class="brand-badge">⚡ Lite</span>
+        <span class="brand-title">MiniAgent<strong>Lite</strong></span>
+      </div>
+      <nav class="nav-links">
+        <a href="#arsitektur">Arsitektur</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#generator">Generator .env</a>
+        <a href="#tools">Daftar Tools</a>
+        <a href="#panduan">Panduan Setup</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="https://github.com/atzartech-prog/miniagentlite" target="_blank" class="btn-github">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="hero-pill">
+        <span class="dot-pulse"></span> Telegram Bot + Gemini Flash Lite / Groq API + Tool Calling
+      </div>
+      <h1 class="hero-title">
+        Kendalikan PC Anda dari Telegram<br>
+        <span class="gradient-text">Ringan, Cepat, dan Cerdas.</span>
+      </h1>
+      <p class="hero-desc">
+        MiniAgentLite adalah template dan panduan pembuatan asisten AI sehari-hari yang berjalan langsung di PC Anda. 
+        Dilengkapi <strong>tangan dan kaki (Tool Calling)</strong> untuk membaca performa sistem, memotret layar monitor, 
+        membuka aplikasi, mengatur volume, hingga mengeksekusi perintah CLI.
+      </p>
+      <div class="hero-buttons">
+        <a href="#simulator" class="btn-primary">🎮 Coba Simulator Interaktif</a>
+        <a href="#generator" class="btn-secondary">⚙️ Generator Konfigurasi</a>
+        <a href="#panduan" class="btn-outline">📖 Panduan 4 Langkah</a>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <span class="metric-val">~300ms</span>
+          <span class="metric-label">Latensi Respon (Groq / Flash Lite)</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">&lt; 35 MB</span>
+          <span class="metric-label">Konsumsi RAM PC</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">100% Gratis</span>
+          <span class="metric-label">Google AI Studio & Groq Free Tier</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">Whitelist ID</span>
+          <span class="metric-label">Keamanan Akses Privat Terjamin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Arsitektur Section -->
+  <section id="arsitektur" class="section-container">
+    <div class="section-header">
+      <span class="section-badge">Alur Kerja Sistem</span>
+      <h2>Bagaimana MiniAgentLite Bekerja?</h2>
+      <p>Arsitektur sederhana tanpa perantara ribet: langsung dari HP Anda ke PC melalui Telegram & LLM API.</p>
+    </div>
+
+    <div class="architecture-diagram">
+      <div class="arch-node" data-node="user">
+        <div class="node-icon">📱</div>
+        <div class="node-title">Pengguna (HP)</div>
+        <div class="node-sub">Kirim teks via Telegram</div>
+      </div>
+      <div class="arch-arrow">➔</div>
+      <div class="arch-node" data-node="telegram">
+        <div class="node-icon">🤖</div>
+        <div class="node-title">Telegram Bot API</div>
+        <div class="node-sub">Long-polling 0-delay</div>
+      </div>
+      <div class="arch-arrow">➔</div>
+      <div class="arch-node highlight-agent" data-node="agent">
+        <div class="node-icon">⚡</div>
+        <div class="node-title">MiniAgentLite</div>
+        <div class="node-sub">agent.py di PC Anda</div>
+      </div>
+      <div class="arch-arrow">⇄</div>
+      <div class="arch-node highlight-llm" data-node="llm">
+        <div class="node-icon">🧠</div>
+        <div class="node-title">Gemini / Groq</div>
+        <div class="node-sub">Ekstraksi Tool Calling JSON</div>
+      </div>
+      <div class="arch-arrow">➔</div>
+      <div class="arch-node highlight-pc" data-node="tools">
+        <div class="node-icon">🦾</div>
+        <div class="node-title">Tangan & Kaki PC</div>
+        <div class="node-sub">tools.py (Hardware & OS)</div>
+      </div>
+    </div>
+
+    <div id="arch-detail-card" class="arch-detail-card">
+      <div class="detail-badge">Klik komponen di atas untuk melihat detail teknis</div>
+      <h3 id="arch-detail-title">Arsitektur Terintegrasi & Aman</h3>
+      <p id="arch-detail-desc">MiniAgentLite bertindak sebagai penghubung ringan (bridge) antara pesan chat Telegram Anda dengan kekuatan reasoning LLM dan modul kontrol hardware lokal di sistem operasi Anda (Windows/Linux/macOS).</p>
+      <div class="code-preview" id="arch-detail-code">
+        <code># MiniAgentLite berjalan di background PC Anda:
+python agent.py</code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Tool Calling Simulator -->
+  <section id="simulator" class="section-container">
+    <div class="section-header">
+      <span class="section-badge">Playground & Simulator</span>
+      <h2>Simulasikan Aksi "Tangan & Kaki" Agen</h2>
+      <p>Coba klik perintah di bawah ini atau ketikkan sendiri untuk melihat bagaimana LLM memutuskan pemanggilan fungsi (Tool Calling) dan mengeksekusi kontrol PC secara langsung!</p>
+    </div>
+
+    <div class="simulator-layout">
+      <!-- Left Panel: Chat Interface -->
+      <div class="sim-panel sim-chat-panel">
+        <div class="sim-panel-header">
+          <div class="sim-chat-user">
+            <div class="avatar-circle">🤖</div>
+            <div>
+              <div class="sim-bot-name">MiniAgentLite PC Bot</div>
+              <div class="sim-bot-status"><span class="dot-online"></span> Online di PC Anda</div>
+            </div>
+          </div>
+          <div class="sim-badge" id="sim-active-engine">Gemini 2.5 Flash Lite</div>
+        </div>
+
+        <div class="sim-chat-body" id="simChatBody">
+          <div class="chat-bubble bot-bubble">
+            👋 Halo Bos! Saya <strong>MiniAgentLite</strong> yang siap mengendalikan PC ini. Silakan pilih contoh perintah di bawah atau ketik langsung permintaan Anda!
+          </div>
+        </div>
+
+        <!-- Preset Prompt Buttons -->
+        <div class="preset-prompts-container">
+          <div class="preset-title">💡 Contoh Perintah Cepat:</div>
+          <div class="preset-chips">
+            <button class="preset-chip" data-prompt="Cek kondisi CPU, RAM, dan Baterai PC sekarang">📊 Status Hardware</button>
+            <button class="preset-chip" data-prompt="Ambil screenshot layar monitor PC saya">📸 Ambil Screenshot</button>
+            <button class="preset-chip" data-prompt="Buka website https://github.com di browser">🌐 Buka Browser</button>
+            <button class="preset-chip" data-prompt="Kecilkan volume speaker PC ke 25%">🔊 Atur Volume</button>
+            <button class="preset-chip" data-prompt="Munculkan notifikasi: Bos, kopi sudah siap!">🔔 Notifikasi Toast</button>
+            <button class="preset-chip" data-prompt="Jalankan perintah bash 'uptime'">💻 Eksekusi Command</button>
+          </div>
+        </div>
+
+        <!-- Chat Input Form -->
+        <form id="simForm" class="sim-chat-footer">
+          <input type="text" id="simInput" placeholder="Ketik perintah untuk PC Anda..." autocomplete="off">
+          <button type="submit" class="btn-send" id="simSendBtn">
+            <span>Kirim</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Panel: Telemetry & Inspector -->
+      <div class="sim-panel sim-inspector-panel">
+        <div class="sim-panel-header">
+          <span class="panel-tag">🔍 Telemetri Eksekusi (Behind The Scenes)</span>
+          <span class="sim-latency" id="simLatencyBadge">Idle</span>
+        </div>
+
+        <div class="inspector-section">
+          <div class="inspector-label">1. Analisis LLM & Function Calling Schema:</div>
+          <div class="json-code-box" id="simJsonPayload">
+            <pre><code class="language-json">{
+  "status": "Menunggu instruksi chat...",
+  "info": "Kirim pesan di sebelah kiri untuk melihat payload function calling."
+}</code></pre>
+          </div>
+        </div>
+
+        <div class="inspector-section">
+          <div class="inspector-label">2. Eksekusi Modul Hardware PC (tools.py):</div>
+          <div class="hardware-execution-box" id="simHwBox">
+            <div class="hw-idle">Menunggu pemanggilan tool...</div>
+          </div>
+        </div>
+
+        <div class="inspector-section">
+          <div class="inspector-label">3. Respon Balik ke Telegram:</div>
+          <div class="response-preview-box" id="simResponsePreview">
+            Belum ada output eksekusi.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Configuration Generator -->
+  <section id="generator" class="section-container">
+    <div class="section-header">
+      <span class="section-badge">Generator Konfigurasi</span>
+      <h2>Buat File .env & Script Siap Pakai</h2>
+      <p>Isi form di bawah ini untuk menghasilkan file <code>.env</code> Anda secara otomatis. Salin dan tempel ke folder proyek di PC Anda!</p>
+    </div>
+
+    <div class="generator-layout">
+      <!-- Input Controls -->
+      <div class="gen-form-card">
+        <h3>Parameter Agen</h3>
+        
+        <div class="form-group">
+          <label for="cfgBotToken">Telegram Bot Token (dari @BotFather):</label>
+          <input type="text" id="cfgBotToken" placeholder="Contoh: 7123456789:AAG..." value="7123456789:AAGSAMPLE_TOKEN_HERE_abcdef123">
+          <span class="form-tip">Dapatkan gratis dengan mengirim <code>/newbot</code> ke @BotFather di Telegram.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="cfgUserId">ID Akun Telegram Anda (Whitelist Keamanan):</label>
+          <input type="text" id="cfgUserId" placeholder="Contoh: 123456789" value="123456789">
+          <span class="form-tip">PENTING! Hanya ID ini yang diizinkan mengontrol PC Anda. Cek ID via @userinfobot.</span>
+        </div>
+
+        <div class="form-group">
+          <label>Pilihan Mesin AI (LLM Provider):</label>
+          <div class="radio-pill-group">
+            <label class="radio-pill">
+              <input type="radio" name="llmProvider" value="gemini" checked>
+              <span>Google Gemini Flash Lite</span>
+            </label>
+            <label class="radio-pill">
+              <input type="radio" name="llmProvider" value="groq">
+              <span>Groq Cloud API</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" id="groupGemini">
+          <label for="cfgGeminiKey">Gemini API Key (Google AI Studio):</label>
+          <input type="password" id="cfgGeminiKey" placeholder="AIzaSy..." value="AIzaSySampleKey_FlashLite_Free">
+          <label for="cfgGeminiModel" style="margin-top: 8px;">Model Gemini:</label>
+          <select id="cfgGeminiModel">
+            <option value="gemini-2.5-flash-lite" selected>gemini-2.5-flash-lite (Ultra Cepat & Ringan)</option>
+            <option value="gemini-1.5-flash-8b">gemini-1.5-flash-8b (Hemat Token)</option>
+            <option value="gemini-1.5-flash">gemini-1.5-flash (Standar)</option>
+          </select>
+        </div>
+
+        <div class="form-group" id="groupGroq" style="display: none;">
+          <label for="cfgGroqKey">Groq API Key:</label>
+          <input type="password" id="cfgGroqKey" placeholder="gsk_..." value="gsk_SampleGroqKey_SpeedMaster">
+          <label for="cfgGroqModel" style="margin-top: 8px;">Model Groq:</label>
+          <select id="cfgGroqModel">
+            <option value="llama-3.3-70b-versatile" selected>llama-3.3-70b-versatile (Cerdas & Cepat)</option>
+            <option value="llama-3.1-8b-instant">llama-3.1-8b-instant (Super Instan)</option>
+            <option value="mixtral-8x7b-32768">mixtral-8x7b-32768 (Konteks Panjang)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Izin Fitur Khusus PC:</label>
+          <div class="checkbox-row">
+            <label><input type="checkbox" id="cfgAllowCmd" checked> Eksekusi Shell / Terminal</label>
+            <label><input type="checkbox" id="cfgAllowScreenshot" checked> Ambil Screenshot Layar</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Output .env Preview -->
+      <div class="gen-output-card">
+        <div class="output-header">
+          <span>File <code>.env</code> yang dihasilkan:</span>
+          <button class="btn-copy" id="btnCopyEnv">📋 Salin .env</button>
+        </div>
+        <pre class="env-code"><code id="envCodePreview"># Memuat konfigurasi...</code></pre>
+
+        <div class="output-header" style="margin-top: 20px;">
+          <span>Perintah Menjalankan di Terminal PC:</span>
+          <button class="btn-copy" id="btnCopyRun">📋 Salin Perintah</button>
+        </div>
+        <pre class="env-code"><code id="runCodePreview">python -m venv venv
+source venv/bin/activate  # atau venv\Scripts\activate di Windows
+pip install -r requirements.txt
+python agent.py</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tool Calling Catalog -->
+  <section id="tools" class="section-container">
+    <div class="section-header">
+      <span class="section-badge">Katalog Kemampuan</span>
+      <h2>Daftar Tool Calling ("Tangan & Kaki")</h2>
+      <p>Modul Python lokal yang dapat dipanggil oleh LLM secara mandiri untuk berinteraksi dengan sistem PC.</p>
+    </div>
+
+    <div class="tools-grid">
+      <!-- Tool Card 1 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">📊</div>
+          <div>
+            <div class="tool-name">get_system_status</div>
+            <span class="safety-badge safe">Aman (Read-Only)</span>
+          </div>
+        </div>
+        <p class="tool-desc">Membaca penggunaan persentase CPU, kapasitas memori RAM (total, used, free), sisa penyimpanan harddisk, status persentase baterai laptop, dan uptime PC.</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Berapa sisa RAM dan status baterai PC sekarang?"</em>
+        </div>
+      </div>
+
+      <!-- Tool Card 2 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">📸</div>
+          <div>
+            <div class="tool-name">take_screenshot</div>
+            <span class="safety-badge safe">Aman (Visual)</span>
+          </div>
+        </div>
+        <p class="tool-desc">Menangkap gambar seluruh layar monitor PC via modul Pillow / ImageGrab, menyimpannya sementara, dan langsung mengirimkan file gambar tersebut ke chat Telegram Anda.</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Tolong screenshot layar monitor dong, mau cek download-an."</em>
+        </div>
+      </div>
+
+      <!-- Tool Card 3 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">🌐</div>
+          <div>
+            <div class="tool-name">open_application_or_url</div>
+            <span class="safety-badge safe">Aman</span>
+          </div>
+        </div>
+        <p class="tool-desc">Membuka tautan web di browser default (Chrome/Firefox/Edge) atau meluncurkan file / software aplikasi di PC (Windows startfile, macOS open, Linux xdg-open).</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Buka video YouTube lo-fi di PC"</em> atau <em>"Buka kalkulator"</em>
+        </div>
+      </div>
+
+      <!-- Tool Card 4 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">🔊</div>
+          <div>
+            <div class="tool-name">set_volume</div>
+            <span class="safety-badge safe">Aman</span>
+          </div>
+        </div>
+        <p class="tool-desc">Mengatur volume output audio speaker PC antara 0 (mute total) sampai 100 (maksimal). Mendukung Windows PowerShell, Linux pactl/amixer, dan macOS osascript.</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Kecilkan volume speaker ke 20 persen sekarang"</em>
+        </div>
+      </div>
+
+      <!-- Tool Card 5 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">🔔</div>
+          <div>
+            <div class="tool-name">send_desktop_notification</div>
+            <span class="safety-badge safe">Aman</span>
+          </div>
+        </div>
+        <p class="tool-desc">Memunculkan banner notifikasi pop-up (Toast Notification) di pojok monitor PC untuk memberi peringatan visual ke orang yang ada di depan PC.</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Kirim notifikasi ke layar PC: Jangan lupa matikan kompor!"</em>
+        </div>
+      </div>
+
+      <!-- Tool Card 6 -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <div class="tool-icon">💻</div>
+          <div>
+            <div class="tool-name">execute_command</div>
+            <span class="safety-badge danger">Perhatian (Power Tool)</span>
+          </div>
+        </div>
+        <p class="tool-desc">Mengeksekusi perintah terminal shell / cmd di PC dengan proteksi timeout (25 detik) dan proteksi filter kata kunci berbahaya (rm -rf /, format c:).</p>
+        <div class="tool-example">
+          <strong>Contoh ucapan di Telegram:</strong><br>
+          <em>"Cek daftar proses yang memakan memory: ps aux --sort=-%mem"</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Step by Step Tutorial -->
+  <section id="panduan" class="section-container">
+    <div class="section-header">
+      <span class="section-badge">Panduan Praktis</span>
+      <h2>Cara Pasang & Jalankan dalam 4 Langkah</h2>
+      <p>Mudah dipelajari bahkan untuk pemula. Siapapun bisa membuat asisten AI PC pribadi dalam waktu kurang dari 5 menit.</p>
+    </div>
+
+    <div class="steps-container">
+      <div class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Buat Bot Telegram & Catat Chat ID Anda</h3>
+          <p>
+            1. Buka aplikasi Telegram, cari bot resmi <strong>@BotFather</strong>, lalu kirim perintah <code>/newbot</code>.<br>
+            2. Ikuti instruksi untuk memberi nama bot dan dapatkan <strong>HTTP API Token</strong>.<br>
+            3. Cari bot <strong>@userinfobot</strong> di Telegram, klik Start untuk mengetahui angka <strong>User ID</strong> akun Telegram Anda (ini nomor whitelist keamanan Anda).
+          </p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Dapatkan API Key LLM (100% Gratis)</h3>
+          <p>
+            Pilih salah satu penyedia LLM gratis dan cepat:<br>
+            • <strong>Google Gemini Flash Lite:</strong> Buka <a href="https://aistudio.google.com/" target="_blank">aistudio.google.com</a>, login dengan akun Google, lalu klik <em>Get API Key</em>.<br>
+            • <strong>Groq Cloud API:</strong> Buka <a href="https://console.groq.com/keys" target="_blank">console.groq.com</a>, buat akun, dan buat API Key baru (kecepatan token inference Groq mencapai 500+ token/detik!).
+          </p>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Clone Repositori & Pasang Dependencies di PC</h3>
+          <p>Buka Terminal (Linux/macOS) atau PowerShell / Command Prompt (Windows) di PC Anda, lalu jalankan:</p>
+          <div class="code-preview">
+            <code>git clone https://github.com/atzartech-prog/miniagentlite.git
+cd miniagentlite
+pip install -r requirements.txt</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Konfigurasi .env & Jalankan Agen</h3>
+          <p>Salin file <code>config.example.env</code> menjadi <code>.env</code> dan masukkan token serta API Key Anda:</p>
+          <div class="code-preview">
+            <code>cp config.example.env .env
+# Edit isi .env menggunakan notepad atau nano
+python agent.py</code>
+          </div>
+          <p>Buka bot Telegram Anda di smartphone, klik <strong>Start</strong> atau ketik <em>"Berapa sisa RAM PC saya?"</em>. Agen Anda langsung merespons dan mengeksekusi kontrol PC secara nyata!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-info">
+        <div class="brand">
+          <span class="brand-badge">⚡ Lite</span>
+          <span class="brand-title">MiniAgent<strong>Lite</strong></span>
+        </div>
+        <p>Proyek open-source untuk membangun asisten AI Telegram yang super ringan, cepat, dan berdaya guna tinggi dengan Tool Calling pengendali PC.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigasi</h4>
+        <a href="#arsitektur">Arsitektur</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#generator">Generator .env</a>
+        <a href="#tools">Katalog Tools</a>
+        <a href="#panduan">Panduan Setup</a>
+      </div>
+      <div class="footer-meta">
+        <h4>Repository</h4>
+        <a href="https://github.com/atzartech-prog/miniagentlite" target="_blank">github.com/atzartech-prog/miniagentlite</a>
+        <p style="margin-top: 10px; font-size: 0.85rem; color: #8892b0;">Lisensi MIT &bull; Bebas dipelajari, dimodifikasi, dan disebarluaskan.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

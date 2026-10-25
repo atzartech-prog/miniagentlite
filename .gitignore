@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Environment & Credentials (SANGAT PENTING)
+.env
+*.env.local
+
+# Screenshots & Temporary files
+*.png
+*.jpg
+*.jpeg
+*.log
+pc_screenshot.png
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

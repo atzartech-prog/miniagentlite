@@ -1,0 +1,14 @@
+# MiniAgentLite - Dependencies
+# Ringan dan cepat untuk menjalankan agen Telegram + Tool Calling PC
+
+python-telegram-bot>=21.0
+python-dotenv>=1.0.0
+psutil>=5.9.0
+Pillow>=10.0.0
+
+# LLM Providers (Gunakan salah satu atau keduanya):
+# Untuk Gemini Flash Lite:
+google-genai>=0.1.0
+
+# Untuk Groq API:
+groq>=0.9.0
